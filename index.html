@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Строительный Архив PRO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <h1>Архив работ: <span id="yearDisplay"></span></h1>
+        <div class="calendar-nav">
+            <button id="prevMonth" class="btn-nav">&lt;</button>
+            <span id="monthDisplay"></span>
+            <button id="nextMonth" class="btn-nav">&gt;</button>
+        </div>
+        <div class="calendar-grid" id="grid"></div>
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Запись дня</h2>
+            <div id="galleryView" class="gallery-slider"></div>
+            <textarea id="commentInput" rows="5" placeholder="Описание..."></textarea>
+            <input type="file" id="fileInput" multiple style="margin-top:10px;">
+            <div class="buttons-row">
+                <button class="btn-nav" id="closeBtn" style="background:#666;">Закрыть</button>
+                <button class="btn-nav" id="saveBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="photoMenu" class="custom-menu" style="display:none; position:absolute; background:#222; border:1px solid #ffc107; z-index:2000;">
+        <button id="viewAction" style="display:block; width:100%; color:white; padding:10px; background:none; border:none; cursor:pointer;">Открыть</button>
+        <button id="deleteAction" style="display:block; width:100%; color:red; padding:10px; background:none; border:none; cursor:pointer;">Удалить</button>
+    </div>
+
+    <script src="javaScript.js"></script>
+</body>
+</html>

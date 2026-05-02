@@ -1,0 +1,229 @@
+:root {
+    --bg-dark: #0f0f0f;           /* Глубокий черный фон */
+    --card-bg: #1a1a1a;           /* Цвет блоков/карточек */
+    --stroy-yellow: #ffc107;      /* Основной строительный желтый */
+    --stroy-yellow-hover: #e0a800;/* Желтый при наведении */
+    --text-main: #f5f5f5;         /* Белый текст */
+    --text-muted: #888888;        /* Серый текст */
+    --border-color: #333333;      /* Цвет границ */
+    --danger: #dc3545;            /* Красный для удаления */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Контейнер календаря */
+.calendar-container {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+
+h1 { 
+    color: var(--stroy-yellow); 
+    text-align: center; 
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Навигация */
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #252525;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#monthDisplay {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--stroy-yellow);
+}
+
+.btn-nav {
+    background: var(--stroy-yellow);
+    border: none;
+    padding: 8px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    background: var(--stroy-yellow-hover);
+    transform: translateY(-2px);
+}
+
+/* Сетка календаря */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-muted);
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.day {
+    aspect-ratio: 1 / 1;
+    background: #222;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.day:hover {
+    border-color: var(--stroy-yellow);
+    background: #2a2a2a;
+}
+
+.day.has-data {
+    background: rgba(255, 193, 7, 0.15);
+    border: 1px solid var(--stroy-yellow);
+    color: var(--stroy-yellow);
+}
+
+/* Модальное окно */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 600px;
+    border: 2px solid var(--stroy-yellow);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Галерея */
+.gallery-slider {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+
+.gallery-slider img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.gallery-slider img:hover {
+    border-color: var(--stroy-yellow);
+    transform: scale(1.05);
+}
+
+/* Поля ввода */
+textarea {
+    width: 100%;
+    background: #121212;
+    color: #fff;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--stroy-yellow);
+}
+
+input[type="file"] {
+    margin: 10px 0;
+    color: var(--text-muted);
+}
+
+/* Кнопки в модалке */
+.buttons-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn-save {
+    background: var(--stroy-yellow);
+    color: #000;
+}
+
+.btn-cancel {
+    background: #444;
+    color: #fff;
+}
+
+/* Контекстное меню для фото */
+.custom-menu {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid var(--stroy-yellow);
+    min-width: 150px;
+}
+
+.custom-menu button {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    text-align: left;
+    background: #222;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.custom-menu button:hover {
+    background: #333;
+}
+
+.custom-menu #deleteAction {
+    color: var(--danger);
+    border-top: 1px solid #333;
+}
